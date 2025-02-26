@@ -1,25 +1,56 @@
-'use client';
-import HeaderBox from '@/components/HeaderBox';
-import RightSidebar from '@/components/RightSidebar';
-import { Suspense } from 'react';
+"use client";
+import { useState } from "react";
+import HeaderBox from "@/components/HeaderBox";
+import RightSidebar from "@/components/RightSidebar";
+import RideButton from "@/components/RideButton";
+import { Suspense } from "react";
+import CreateRideForm from "@/components/CreateRideForm"; // Import the form for creating a ride
+import RequestRideForm from "@/components/RequestRideForm"; // Import the form for requesting a ride
+import UpdateRideForm from "@/components/UpdateRideForm"; // Import the form for updating a ride
 
 const Home = () => {
-  const loggedInUser = { firstName: 'Haroun' }; // Replace with actual user data
+  const loggedInUser = { firstName: "Haroun" }; // Replace with actual user data
+  const [showForm, setShowForm] = useState<string | null>(null); // State to control which form is shown
 
-  const handleRideClick = (type) => console.log(`${type} button clicked`);
+  // Function to show the respective form based on the button clicked
+  const handleButtonClick = (action: string) => {
+    setShowForm(action);
+  };
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <section className="home">
         <div className="home-content">
           <header className="home-header">
-            <HeaderBox type="greeting" title="Welcome" user={loggedInUser?.firstName || 'Guest'} subtext="Ride Safely" />
+            <HeaderBox
+              type="greeting"
+              title="Welcome"
+              user={loggedInUser?.firstName || "Guest"}
+              subtext="Ride Safely"
+            />
           </header>
-          
-          <div className="ride-buttons">
-            {['Share a Ride', 'Request a Ride', 'Update a Ride'].map((text, idx) => (
-              <button key={idx} onClick={() => handleRideClick(text)}>{text}</button>
-            ))}
+
+          {/* Conditional rendering of forms based on button clicked */}
+          {showForm === "create" && <CreateRideForm />}
+          {showForm === "request" && <RequestRideForm />}
+          {showForm === "update" && <UpdateRideForm />}
+
+          <div className="ride-buttons flex flex-col gap-5 mt-5">
+            <RideButton
+              text="Share a Ride"
+              onClick={() => handleButtonClick("create")}
+              variant="create"
+            />
+            <RideButton
+              text="Request a Ride"
+              onClick={() => handleButtonClick("request")}
+              variant="request"
+            />
+            <RideButton
+              text="Update a Ride"
+              onClick={() => handleButtonClick("update")}
+              variant="update"
+            />
           </div>
         </div>
         <RightSidebar user={loggedInUser} onBankAccountAdded={() => console.log("Bank account added!")} />

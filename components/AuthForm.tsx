@@ -22,7 +22,7 @@ const AuthForm = ({ type }: { type: string }) => {
     useEffect(() => {
         // Redirect if the user is already logged in (if logged in or if on login/register page)
         if (pathname === '/login' || pathname === '/register') {
-            router.push('/');
+            // router.push('/');
         }
     }, [pathname, router]);
 

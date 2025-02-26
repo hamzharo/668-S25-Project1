@@ -52,7 +52,7 @@ const RightSidebar = ({ user, go }: RightSidebarProps) => {
                     </div>
                 </div>
             </section>
-            <section className='banks'>
+            <section className='banks space-y-4'>
                 <div className='flex w-full justify-between'>
                     <h2 className='header-2'>Edit Profile </h2>
                     <Link href={'/'} className='flex gap-2'>

@@ -83,11 +83,6 @@ declare type Receiver = {
 };
 
 
-
-
-
-
-
 declare interface HeaderBoxProps {
   type?: "title" | "greeting";
   title: string;

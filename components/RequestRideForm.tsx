@@ -10,6 +10,9 @@ const RequestRideForm = () => {
   const [search, setSearch] = useState({
     departureCity: "",
     destination: "",
+    departureTime: "",
+    maxFare: "",
+    minSeats: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +37,18 @@ const RequestRideForm = () => {
         <div>
           <Label>Destination</Label>
           <Input name="destination" value={search.destination} onChange={handleChange} required />
+        </div>
+        <div>
+          <Label>Desired Departure Time</Label>
+          <Input type="datetime-local" name="departureTime" value={search.departureTime} onChange={handleChange} />
+        </div>
+        <div>
+          <Label>Maximum Fare</Label>
+          <Input type="number" name="maxFare" value={search.maxFare} onChange={handleChange} />
+        </div>
+        <div>
+          <Label>Minimum Available Seats</Label>
+          <Input type="number" name="minSeats" value={search.minSeats} onChange={handleChange} />
         </div>
         <Button className="w-full" onClick={handleSearch}>
           Find Ride

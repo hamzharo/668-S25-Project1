@@ -22,6 +22,17 @@ const UpdateRideForm = () => {
     alert("Ride details updated successfully!");
   };
 
+  const handleCancel = () => {
+    console.log(`Canceling ride ${rideId}`);
+    alert("Ride has been canceled.");
+  };
+
+  const handleViewPassengers = () => {
+    console.log(`Viewing passengers for ride ${rideId}`);
+    const passengers = ["Alice", "Bob", "Charlie"]; // Simulated passenger list
+    alert(`Passengers: ${passengers.join(", ")}`);
+  };
+
   return (
     <Card className="w-full max-w-lg">
       <CardHeader>
@@ -42,6 +53,12 @@ const UpdateRideForm = () => {
         </div>
         <Button className="w-full" onClick={handleUpdate}>
           Update Ride
+        </Button>
+        <Button variant="destructive" onClick={handleCancel} className="w-full mt-2">
+          Cancel Ride
+        </Button>
+        <Button onClick={handleViewPassengers} className="w-full mt-2">
+          View Passengers
         </Button>
       </CardContent>
     </Card>

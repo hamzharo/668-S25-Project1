@@ -5,7 +5,7 @@ import { getLoggedInUser, request } from '@/lib/utils';
 import { loginResponse, Account } from '@/types';
 import React, { useState, useEffect } from 'react';
 
-const MyBanks = () => {
+const MyRide = () => {
     const [loggedInUser, setLoggedInUser] = useState<loginResponse | null>(null);
     const [accounts, setAccounts] = useState<Account[]>([]);
 
@@ -27,7 +27,7 @@ const MyBanks = () => {
 
     return (
         <section className='flex'>
-            <div className="my-banks">
+            <div className="my-ride">
                 <HeaderBox
                     title="My Accounts"
                     subtext="safe and easy ride ."
@@ -44,4 +44,4 @@ const MyBanks = () => {
     )
 }
 
-export default MyBanks;
+export default MyRide;
